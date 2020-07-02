@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: lb-test
+  name: hello-world
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      name: lb-test
+  template:
+    metadata:
+      labels:
+        name: lb-test
+    spec:
+      containers:
+      - image: gcr.io/google-samples/node-hello:1.0
+        name: hello-world
+        ports:
+        - containerPort: 8080
