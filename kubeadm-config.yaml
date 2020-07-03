@@ -1,0 +1,27 @@
+apiServer:
+  timeoutForControlPlane: 4m0s
+apiVersion: kubeadm.k8s.io/v1beta2
+certificatesDir: /etc/kubernetes/pki
+clusterName: kubernetes
+controllerManager: {}
+dns:
+  type: CoreDNS
+etcd:
+  local:
+    dataDir: /var/lib/etcd
+imageRepository: k8s.gcr.io
+kind: ClusterConfiguration
+kubernetesVersion: v1.18.0
+nodeRegistration:
+  name: ip-10-1-1-148.us-west-2.compute.internal
+  kubeletExtraArgs:
+    cloud-provider: aws
+networking:
+  dnsDomain: cluster.local
+  podSubnet: 10.244.0.0/16
+  serviceSubnet: 10.96.0.0/12
+scheduler: {}
+apiServerExtraArgs:
+  cloud-provider: aws
+controllerManagerExtraArgs:
+  cloud-provider: aws
